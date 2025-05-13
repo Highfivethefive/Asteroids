@@ -17,10 +17,6 @@ def main():
     #variables
     dt = 0
 
-    #able to quit the program with X
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            return
 
 
     running = True
@@ -32,15 +28,21 @@ def main():
 
     while running:
 
+        #able to quit the program with X
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                return
+
+        dt = clock.tick(60) /1000
+        
         #each frame
         screen.fill("black")
 
         #player
+        Player_1.update(dt)
         Player_1.draw(screen)
         #render new frame
         pygame.display.flip() 
-
-        dt = clock.tick(60) /1000
 
 
 
