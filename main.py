@@ -12,11 +12,16 @@ screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 clock = pygame.time.Clock()
 
 
+
 def main():
 
     #variables
     dt = 0
 
+    #groups
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+    Player.containers = (updatable, drawable)
 
 
     running = True
@@ -25,7 +30,7 @@ def main():
     print(f"Screen height: {SCREEN_HEIGHT}")
 
     Player_1 = Player(SCREEN_WIDTH/2,SCREEN_HEIGHT/2)
-
+    
     while running:
 
         #able to quit the program with X
@@ -34,13 +39,16 @@ def main():
                 return
 
         dt = clock.tick(60) /1000
-        
+
         #each frame
         screen.fill("black")
 
-        #player
-        Player_1.update(dt)
-        Player_1.draw(screen)
+        #player update all things able to update
+        updatable.update(dt)
+
+        for obj in drawable:
+            obj.draw(screen)
+
         #render new frame
         pygame.display.flip() 
 
