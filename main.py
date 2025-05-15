@@ -52,6 +52,13 @@ def main():
         #player update all things able to update
         updatable.update(dt)
 
+
+        #check for collision and draw
+        for astroid in asteroids:
+            if Player_1.collision(astroid):
+                print("Game over!")
+                return
+
         for obj in drawable:
             obj.draw(screen)
 
