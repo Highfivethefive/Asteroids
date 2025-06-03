@@ -61,6 +61,16 @@ def main():
             if Player_1.collision(astroid):
                 print("Game over!")
                 return
+            
+            #check if any bulley collides
+            for bullet in shots:
+                if bullet.collision(astroid):
+                    astroid.kill()
+                    bullet.kill()
+            
+            
+        
+
 
         for obj in drawable:
             obj.draw(screen)
