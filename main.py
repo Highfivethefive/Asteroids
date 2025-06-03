@@ -62,10 +62,10 @@ def main():
                 print("Game over!")
                 return
             
-            #check if any bulley collides
+            #check if any bulley collides with astroid delete objects if they collide
             for bullet in shots:
                 if bullet.collision(astroid):
-                    astroid.kill()
+                    astroid.split()
                     bullet.kill()
             
             
