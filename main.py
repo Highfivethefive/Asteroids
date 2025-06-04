@@ -9,15 +9,20 @@ pygame.init()
 
 #GUI window
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+pygame.display.set_caption("Asteroids")
 
 #clock
 clock = pygame.time.Clock()
+
+#font for writing
+font = pygame.font.SysFont("arial", 25)
 
 
 def main():
 
     #variables
     dt = 0
+    score = 0
 
     #groups
     updatable = pygame.sprite.Group()
@@ -67,6 +72,10 @@ def main():
                 if bullet.collision(astroid):
                     astroid.split()
                     bullet.kill()
+
+                    #calculate score when something gets destroyed
+                    score +=  Asteroid.Score(astroid.radius)
+
             
             
         
@@ -74,6 +83,10 @@ def main():
 
         for obj in drawable:
             obj.draw(screen)
+
+        #render text in bottom corner
+        text = font.render(f"{score}", True, "white")
+        screen.blit(text, [SCREEN_WIDTH - 60, SCREEN_HEIGHT - 30])
 
         #render new frame
         pygame.display.flip() 

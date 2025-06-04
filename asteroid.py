@@ -29,8 +29,17 @@ class Asteroid(CircleShape):
         velocity_two = self.velocity.rotate(-rand_angle)
         new_radius = self.radius - ASTEROID_MIN_RADIUS
 
-        #create two new astroids
+        #create two new astroids and splits them in triangle type direction
         aster1 = Asteroid(self.position.x,self.position.y,new_radius)
         aster2 = Asteroid(self.position.x,self.position.y,new_radius)
         aster1.velocity = velocity_one * 1.2
         aster2.velocity = velocity_two * 1.2
+
+    def Score(radius):
+        if radius <= ASTEROID_MIN_RADIUS:
+            score = 50
+        elif radius >= ASTEROID_MIN_RADIUS * 2:
+            score = 150
+        else:
+            score = 100
+        return score
