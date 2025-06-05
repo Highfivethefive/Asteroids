@@ -1,4 +1,5 @@
 import pygame
+from constants import *
 
 # Base class for game objects
 class CircleShape(pygame.sprite.Sprite):
@@ -29,3 +30,16 @@ class CircleShape(pygame.sprite.Sprite):
             return True
         else:
             return False
+    
+    def Boundary(position):
+        if position.x > SCREEN_WIDTH:
+            position.x = 1
+        elif position.x < 0:
+            position.x = SCREEN_WIDTH -1
+        
+        if position.y > SCREEN_HEIGHT:
+            position.y = 1
+        elif position.y < 0:
+            position.y = SCREEN_HEIGHT -1
+        
+        return position

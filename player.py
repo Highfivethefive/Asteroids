@@ -42,9 +42,11 @@ class Player(CircleShape):
 
         if keys[pygame.K_w]:
             self.move(dt)
+            self.position = CircleShape.Boundary(self.position)
 
         if keys[pygame.K_s]:
             self.move(-dt)
+            self.position = CircleShape.Boundary(self.position)
         
         if keys[pygame.K_SPACE]:
             self.shoot()
@@ -64,6 +66,10 @@ class Player(CircleShape):
         bullet.velocity = bullet.velocity.rotate(self.rotation)
         bullet.velocity = bullet.velocity * PLAYER_SHOOT_SPEED
         self.timer = 0.3
+        
+
+
+
 
 
 

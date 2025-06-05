@@ -13,6 +13,9 @@ class Asteroid(CircleShape):
     def update(self, dt):
 
         self.position += self.velocity * dt
+        #check boundray make sure it over laps
+        #make a seperate one for circles
+        ##self.position = CircleShape.Boundary(self.position)
     
     def split(self,):
         
