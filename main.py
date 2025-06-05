@@ -23,13 +23,16 @@ def main():
     #variables
     dt = 0
     score = 0
+    lives = 3
 
     #groups
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
     shots = pygame.sprite.Group()
+    traingles_lives = pygame.sprite.Group() 
     Player.containers = (updatable, drawable)
     Shot.containers = (shots,updatable,drawable)
+    
 
     #group astroid
     asteroids = pygame.sprite.Group()
@@ -63,9 +66,19 @@ def main():
 
         #check for collision and draw
         for astroid in asteroids:
+            # check to see if die
             if Player_1.collision(astroid):
-                print("Game over!")
-                return
+                if lives == 0:
+                    print("Game over!")
+                    return
+                lives -= 1
+
+                #respawn player in the center
+                Player_1.kill()
+                Player_1 = Player(SCREEN_WIDTH/2,SCREEN_HEIGHT/2)
+
+                
+                
             
             #check if any bulley collides with astroid delete objects if they collide
             for bullet in shots:
@@ -77,7 +90,8 @@ def main():
                     score +=  Asteroid.Score(astroid.radius)
 
             
-            
+        #add visuals for lives with no groups
+        Asteroid.Player_Lives(lives,screen)
         
 
 

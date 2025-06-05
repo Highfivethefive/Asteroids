@@ -43,3 +43,17 @@ class Asteroid(CircleShape):
         else:
             score = 100
         return score
+    
+    def Player_Lives(lives,screen):
+        
+        if lives == 3:
+            pygame.draw.polygon(screen, "white", [(SCREEN_WIDTH - 30, SCREEN_HEIGHT - 55), (SCREEN_WIDTH - 40, SCREEN_HEIGHT - 40), (SCREEN_WIDTH - 20, SCREEN_HEIGHT - 40)], 2)
+            pygame.draw.polygon(screen, "white", [(SCREEN_WIDTH - 60, SCREEN_HEIGHT - 55), (SCREEN_WIDTH - 70, SCREEN_HEIGHT - 40), (SCREEN_WIDTH - 50, SCREEN_HEIGHT - 40)], 2)
+            pygame.draw.polygon(screen, "white", [(SCREEN_WIDTH - 90, SCREEN_HEIGHT - 55), (SCREEN_WIDTH - 100,SCREEN_HEIGHT - 40), (SCREEN_WIDTH - 80, SCREEN_HEIGHT - 40)], 2)
+        elif lives == 2:
+            pygame.draw.polygon(screen, "white", [(SCREEN_WIDTH - 60, SCREEN_HEIGHT - 55), (SCREEN_WIDTH - 70, SCREEN_HEIGHT - 40), (SCREEN_WIDTH - 50, SCREEN_HEIGHT - 40)], 2)
+            pygame.draw.polygon(screen, "white", [(SCREEN_WIDTH - 90, SCREEN_HEIGHT - 55), (SCREEN_WIDTH - 100,SCREEN_HEIGHT - 40), (SCREEN_WIDTH - 80, SCREEN_HEIGHT - 40)], 2)
+        elif lives == 1:
+            pygame.draw.polygon(screen, "white", [(SCREEN_WIDTH - 90, SCREEN_HEIGHT - 55), (SCREEN_WIDTH - 100,SCREEN_HEIGHT - 40), (SCREEN_WIDTH - 80, SCREEN_HEIGHT - 40)], 2)
+        else:
+            return
